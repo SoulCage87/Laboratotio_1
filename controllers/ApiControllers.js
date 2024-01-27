@@ -44,7 +44,14 @@ res.json(result);
 
 };
 
-const dltJuego = async
+const dltJuego = async (req,res) => {
+    const params = [req.params.id];
+
+    const sql = `DELETE FROM tbl_videjuegos WHERE id = $1 returning *`;
+    const result = await db.query(sql,params);
+
+    res.json(result);
+};
 
 
-export {getJuego, postJuego, putJuego};
+export {getJuego, postJuego, putJuego, dltJuego};
