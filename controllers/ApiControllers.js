@@ -22,5 +22,29 @@ const postJuego = async (req,res) => {
 
 };
 
+const putJuego = async (req,res) => {
 
-export {getJuego, postJuego};
+const {nombre, desarrollador} = req.body;
+const {id} = req.params;
+
+const params = [
+    nombre,
+    desarrollador,
+    id
+];
+
+const sql = `update tbl_videjuegos 
+set
+ nombre = $1, 
+ desarrollador = $2
+where id = $3 returning *`;
+
+const result = await db.query(sql, params);
+res.json(result);
+
+};
+
+const dltJuego = async
+
+
+export {getJuego, postJuego, putJuego};
