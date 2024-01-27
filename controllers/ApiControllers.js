@@ -2,7 +2,7 @@ import {db} from '../db/conn.js';
 
 const getJuego = async (req, res) => {
  
-    const sql = `SELECT * FROM tbl_videjuegos`;
+    const sql = `SELECT * FROM tbl_videjuegos ORDER BY id`;
     const result = await db.query(sql);
     res.json(result);
 };
